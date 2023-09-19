@@ -52,8 +52,7 @@ function void write(input transactions_fifo req1);
          			else
           				 $display("FIFO EMPTY TEST CASE FAIL");
       
-        			if(count<=LOW_TH && count!=0)
-        				 check_almost_empty=1;
+                if(count<LOW_TH)   				 			                                check_almost_empty=1;
                        
           			if(req1.o_alm_empty==1 && check_almost_empty==1)
                       $display("FIFO ALMOST EMPTY TEST CASE PASS");
@@ -63,7 +62,7 @@ function void write(input transactions_fifo req1);
                 
                 
                 
-                if(count>=(DEPTH-UPP_TH) && count<DEPTH)
+                if(count>UPP_TH)
        					  check_almost_full=1;
                 
                 if((req1.o_alm_full==1) && (check_almost_full==1))
@@ -104,7 +103,7 @@ function void write(input transactions_fifo req1);
          			else
           				 $display("FIFO EMPTY TEST CASE FAIL");
       
-        			if(count<=LOW_TH && count!=0)
+        			if(count<LOW_TH) 
         				 check_almost_empty=1;
                        
           			if(req1.o_alm_empty==1 && check_almost_empty==1)
@@ -115,7 +114,7 @@ function void write(input transactions_fifo req1);
                   
                   
                   
-                	  if(count>=(DEPTH-UPP_TH) && count<DEPTH)
+                	  if(count>UPP_TH)
        					  check_almost_full=1;
                 
               		  if((req1.o_alm_full==1) && (check_almost_full==1))
