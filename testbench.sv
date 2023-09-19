@@ -23,15 +23,15 @@ end
   
 interface_fifo intf(clk, rstn);
   
-SYN_FIFO dut(.clk(intf.clk),
-               .rst(intf.rstn),
-               .data_in(intf.i_wrdata),
-               .write_en(intf.i_wren),
-               .read_en(intf.i_rden),
-               .full(intf.o_full),
-               .empty(intf.o_empty),
-               .data_out(intf.o_rddata),
-               .almost_full(intf.o_alm_full), .almost_empty(intf.o_alm_empty));
+my_fifo dut(.clk(intf.clk),
+               .rstn(intf.rstn),
+               .i_wrdata(intf.i_wrdata),
+               .i_wren(intf.i_wren),
+               .i_rden(intf.i_rden),
+               .o_full(intf.o_full),
+            .o_empty(intf.o_empty),
+               .o_rddata(intf.o_rddata),
+               .o_alm_full(intf.o_alm_full), .o_alm_empty(intf.o_alm_empty));
   
 initial begin
     uvm_config_db#(virtual interface_fifo)::set(null, "", "vif",intf);
